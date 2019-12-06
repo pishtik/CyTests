@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
      "build": "npm run lint && npm run types && npm run stop-only",
     "start": "serve --listen ${PORT:-8080}",
     "start:ci": "serve --no-clipboard --listen ${PORT:-8080}",
