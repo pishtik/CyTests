@@ -26,7 +26,7 @@ describe('Demo of cy retrospective test', function() {
             main focus was CRUD application created and verify , introduced xpath library  ') 
 
     cy.visit('https://www.retrospected.com/')
-
+	cy.wait(10000)
 	cy.get('div')
 		.should('have.class', 'MuiPaper-root')
 		.and('have.class', 'MuiPaper-elevation24')
