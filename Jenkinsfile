@@ -37,7 +37,8 @@ pipeline {
   agent {
     // this image provides everything needed to run Cypress
     docker {
-      image 'cypress/base:10'
+//      image 'cypress/base:10'
+      image 'cypress/included:3.7.0'
     }
   }
 
@@ -80,7 +81,7 @@ pipeline {
       parallel {
         // start several test jobs in parallel, and they all
         // will use Cypress Dashboard to load balance any found spec files
-        stage('tester A') {
+        stage('Node A') {
           steps {
             echo "Running build ${env.BUILD_ID}"
             sh "npm run e2e:record:parallel"
@@ -88,7 +89,7 @@ pipeline {
         }
 
         // second tester runs the same command
-        stage('tester B') {
+        stage('Node B') {
           steps {
             echo "Running build ${env.BUILD_ID}"
             sh "npm run e2e:record:parallel"
