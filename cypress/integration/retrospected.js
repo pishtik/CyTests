@@ -18,12 +18,15 @@ describe('Demo of cy retrospective test', function() {
 
   var userName = userName_Alpha_Numeric();
 
+//purpuse of this test is demonstration of cypress capability teting reactJs web app 
+//main focus was CRUD application created and verify , introduced xpath library 
+
   it('retrospected test', function() {
+	cy.log(' purpuse of this test is demonstration of cypress capability teting reactJs web app \
+            main focus was CRUD application created and verify , introduced xpath library  ') 
 
     cy.visit('https://www.retrospected.com/')
-	
-	cy.wait(9000);
-	
+
 	cy.get('div')
 		.should('have.class', 'MuiPaper-root')
 		.and('have.class', 'MuiPaper-elevation24')
@@ -42,15 +45,6 @@ describe('Demo of cy retrospective test', function() {
 		.type(userName)
 	  
 	cy.contains("Let's start").click()
-
-	cy.get('h6')
-		.should('have.class', 'MuiTypography-root')
-		.and('have.class', 'sc-iRbamj')
-		.and('have.class', 'sc-jlyJG')
-		.and('have.class', 'gNNmcB')
-		.and('have.class', 'MuiTypography-h6')
-		.and('have.class', 'MuiTypography-colorInherit')
-		.contains('Retrospected')
 
 	cy.xpath('//button[@class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-colorInherit"]/span')
 		.contains(userName)
@@ -109,15 +103,6 @@ describe('Demo of cy retrospective test', function() {
 	cy.xpath("(//button[@aria-label='Open the Action panel'])[3]").click()
 
 	cy.xpath("(//p[@class='MuiTypography-root MuiTypography-body1'])[6]").type('Agree with nothing !')
-
-	cy.xpath("//div[@class='MuiPaper-root MuiPaper-elevation1 MuiCard-root sc-kgoBCf gcVjPA MuiPaper-rounded']/div/p/span/span/span")
-		.contains('something')
-
-	cy.xpath("//div[@class='MuiPaper-root MuiPaper-elevation1 MuiCard-root sc-kgoBCf gcVjPA MuiPaper-rounded']/div/p/span/span/span")
-		.contains('everything')
-
-	cy.xpath("//div[@class='MuiPaper-root MuiPaper-elevation1 MuiCard-root sc-kgoBCf gcVjPA MuiPaper-rounded']/div/p/span/span/span")
-		.contains('nothing')
 
 	cy.xpath("(//header/div/button/span[@class='MuiButton-label'])[2]")
 		.click()
