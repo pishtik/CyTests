@@ -22,6 +22,8 @@ describe('Demo of cy retrospective test', function() {
 
     cy.visit('https://www.retrospected.com/')
 	
+	cy.wait(9000);
+	
 	cy.get('div')
 		.should('have.class', 'MuiPaper-root')
 		.and('have.class', 'MuiPaper-elevation24')
