@@ -52,8 +52,7 @@ pipeline {
         // http://localhost:8080/pipeline-syntax/globals#env
         echo "Running build ${env.BUILD_ID} on ${env.JENKINS_URL}"
         sh 'npm version'
-        sh 'npm install cypress'
-        sh 'npm install'
+        sh 'yarn install'
         sh 'npm run cy:verify'
       }
     }
