@@ -4,10 +4,12 @@
   "description": "cypress tests for WebEDI project",
   "main": "index.js",
   "files": [
+    "app",
     "cypress"
   ],
   "scripts": {
-    "build": "npm run lint && npm run types && npm run stop-only",
+    "test": "echo \"Error: no test specified\" && exit 1",
+	 "build": "npm run lint && npm run types && npm run stop-only",
     "start": "serve --listen ${PORT:-8080}",
     "start:ci": "serve --no-clipboard --listen ${PORT:-8080}",
     "start:ci:windows": "serve --no-clipboard --listen 8080",
@@ -52,16 +54,14 @@
     "husky": "^3.1.0",
     "pg": "^7.14.0",
     "semantic-release": "^15.13.31",
+    "start-server-and-test": "^1.10.6",
     "stop-build": "^1.1.0",
     "stop-only": "^3.1.0",
     "typescript": "^3.7.3",
     "yaml-lint": "^1.2.4"
   },
   "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-    "husky": {
+  "husky": {
     "hooks": {
       "pre-commit": "npm run warn-only && npm run lint:yaml",
       "pre-push": "npm run stop-only && npm run lint:yaml"
