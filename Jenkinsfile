@@ -39,7 +39,7 @@ pipeline {
     docker {
  //     image 'cypress/base:10'
       image 'cypress/included:3.7.0'
-      args '--entrypoint cypress'
+      args '--entrypoint'
     }
   }
 
