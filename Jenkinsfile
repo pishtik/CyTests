@@ -57,10 +57,10 @@ pipeline {
 		sh 'npm ci --prefer-offline --no-audit'
         sh 'npm run cy:verify'
 		sh 'npm run cleanup'
-    sh 'npm run cleanupMergedReport'
+//    sh 'npm run cleanupMergedReport'
 		script {
 //          currentBuild.displayName = "The name."
-            currentBuild.description = "<a href='/view/webedi/job/webedi-Cypress_Tests/"+currentBuild.number+"/execution/node/3/ws/mochawesome-report/reports-output.html' class='button1'>show report from current run </a>"
+ //           currentBuild.description = "<a href='/view/webedi/job/webedi-Cypress_Tests/"+currentBuild.number+"/execution/node/3/ws/mochawesome-report/reports-output.html' class='button1'>show report from current run </a>"
         }
       }
     }
@@ -114,7 +114,7 @@ pipeline {
     always {
       echo 'Stopping local server'
 //      sh 'pkill -f http-server'
-		sh 'npm run create_report' //create mocha reports
+//		sh 'npm run create_report' //create mocha reports
     }
   }
 }
