@@ -37,9 +37,10 @@ pipeline {
   agent {
     // this image provides everything needed to run Cypress
     docker {
- //     image 'cypress/base:10'
-      image 'cypress/included:3.7.0'
-      args '--entrypoint ""'
+       image 'cypress/base:10'
+//     image 'cypress/included:3.7.0'
+//	   args  '--entrypoint ""'
+//	   args '-u root:root'
     }
   }
 
@@ -51,9 +52,16 @@ pipeline {
         // on local Jenkins machine (assuming port 8080) see
         // http://localhost:8080/pipeline-syntax/globals#env
         echo "Running build ${env.BUILD_ID} on ${env.JENKINS_URL}"
-        sh 'npm version'
-        sh 'yarn install'
+		sh 'npm version'
+//		sh 'npm install'
+		sh 'npm ci --prefer-offline --no-audit'
         sh 'npm run cy:verify'
+		sh 'npm run cleanup'
+    sh 'npm run cleanupMergedReport'
+		script {
+//          currentBuild.displayName = "The name."
+            currentBuild.description = "<a href='/view/webedi/job/webedi-Cypress_Tests/"+currentBuild.number+"/execution/node/3/ws/mochawesome-report/reports-output.html' class='button1'>show report from current run </a>"
+        }
       }
     }
 
@@ -86,7 +94,7 @@ pipeline {
         stage('Node A') {
           steps {
             echo "Running build ${env.BUILD_ID}"
-            sh "npm run e2e:record:parallel"
+            sh "npm run e2e:record:parallel ${env.BUILD_ID}"
           }
         }
 
@@ -94,11 +102,10 @@ pipeline {
         stage('Node B') {
           steps {
             echo "Running build ${env.BUILD_ID}"
-            sh "npm run e2e:record:parallel"
+            sh "npm run e2e:record:parallel ${env.BUILD_ID}"
           }
         }
       }
-
     }
   }
 
@@ -107,6 +114,7 @@ pipeline {
     always {
       echo 'Stopping local server'
 //      sh 'pkill -f http-server'
+		sh 'npm run create_report' //create mocha reports
     }
   }
 }
