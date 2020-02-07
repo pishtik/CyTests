@@ -60,7 +60,7 @@ pipeline {
 //    sh 'npm run cleanupMergedReport'
 		script {
 //          currentBuild.displayName = "The name."
- //           currentBuild.description = "<a href='/view/webedi/job/webedi-Cypress_Tests/"+currentBuild.number+"/execution/node/3/ws/mochawesome-report/reports-output.html' class='button1'>show report from current run </a>"
+            currentBuild.description = "<a href='/view/webedi/job/webedi-Cypress_Tests/"+currentBuild.number+"/execution/node/3/ws/mochawesome-report/reports-output.html' class='button1'>show report from current run </a>"
         }
       }
     }
