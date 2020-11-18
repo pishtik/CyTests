@@ -57,7 +57,7 @@
     "globby": "^10.0.1",
     "husky": "^3.1.0",
     "pg": "^7.14.0",
-    "semantic-release": "^15.13.31",
+    "semantic-release": "^17.2.3",
     "start-server-and-test": "^1.10.6",
     "stop-build": "^1.1.0",
     "stop-only": "^3.1.0",
